@@ -127,8 +127,8 @@ function transform(obj) {
 function runProgram() {
    // initialPrompt();
    console.log(oldScrabbleScorer(initialPrompt()));
-   console.log(simpleScorer(initialPrompt()));
-   console.log(vowelBonusScorer(initialPrompt()));
+   //console.log(simpleScorer(initialPrompt()));
+   //console.log(vowelBonusScorer(initialPrompt()));
    console.log(scorerPrompt());
    // console.log(newPointStructure);
 }
