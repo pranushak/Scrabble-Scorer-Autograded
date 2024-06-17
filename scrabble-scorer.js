@@ -77,36 +77,40 @@ let scrabbleScorer = function (word) {
 
 const scoringAlgorithms = [
    {
+      name: "Simple Score",
+      description: "Each letter is worth 1 point.",
       scorerFunction: simpleScorer
    },
    {
+      name: "Bonus Vowels",
+      description: "Vowels are 3 pts, consonants are 1 pt.",
       scorerFunction: vowelBonusScorer
    },
    {
+      name: "Scrabble",
+      description: "The traditional scoring algorithm.",
       scorerFunction: scrabbleScorer
    }
 ];
 
 function scorerPrompt() {
-   let numberToSelect = input.question("Which scoring algorithm would you like to use? ");
-   for (let i = 0; i < numberToSelect; i++) {
-     
-      console.log("0 - Simple: One point per character");
-      console.log("1 - Vowel Bonus: Vowels are worth 3 points");
-      console.log("2 - Scrabble: Uses scrabble point system");
+   console.log("Which scoring algorithm would you like to use? ");
 
-      let selectScoringAlgorithm = input.question("Enter 0, 1, or 2: ");
-      if (Number(selectScoringAlgorithm) === 0) {
-         return `score for '${word}': ${simpleScorer(initialPrompt())}`;
-      } else if (Number(selectScoringAlgorithm) === 1) {
-         return `score for '${word}': ${vowelBonusScorer(initialPrompt())}`;
-      } else if (Number(selectScoringAlgorithm) === 2) {
-         return `score for '${word}': ${oldScrabbleScorer(initialPrompt())}`;
-      } else {
-         return selectScoringAlgorithm;
-      }
+
+   console.log("0 - Simple: One point per character");
+   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
+   console.log("2 - Scrabble: Uses scrabble point system");
+
+   let selectScoringAlgorithm = input.question("Enter 0, 1, or 2: ");
+   if (Number(selectScoringAlgorithm) === 0) {
+      return `score for '${word}': ${simpleScorer(word)}`;
+   } else if (Number(selectScoringAlgorithm) === 1) {
+      return `score for '${word}': ${vowelBonusScorer(word)}`;
+   } else if (Number(selectScoringAlgorithm) === 2) {
+      return `score for '${word}': ${scrabbleScorer(word)}`;
+   } else {
+      return selectScoringAlgorithm;
    }
-
 }
 
 function transform(obj) {
@@ -126,7 +130,7 @@ function runProgram() {
    console.log(simpleScorer(initialPrompt()));
    console.log(vowelBonusScorer(initialPrompt()));
    console.log(scorerPrompt());
-  // console.log(newPointStructure);
+   // console.log(newPointStructure);
 }
 
 // Don't write any code below this line //
