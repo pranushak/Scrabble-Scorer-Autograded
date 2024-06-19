@@ -32,7 +32,7 @@ function oldScrabbleScorer(word) {
 console.log("Let's play some Scrabble!");
 
 function initialPrompt() {
-   return word = input.question("Enter a word to score: ");
+   return input.question("Enter a word to score: "); 
 };
 
 let newPointStructure = transform(oldPointStructure);
@@ -102,6 +102,7 @@ function scorerPrompt() {
    console.log("2 - Scrabble: Uses scrabble point system");
 
    let selectScoringAlgorithm = input.question("Enter 0, 1, or 2: ");
+   let word = initialPrompt();
    if (Number(selectScoringAlgorithm) === 0) {
       return `score for '${word}': ${simpleScorer(word)}`;
    } else if (Number(selectScoringAlgorithm) === 1) {
@@ -126,7 +127,7 @@ function transform(obj) {
 
 function runProgram() {
    // initialPrompt();
-   console.log(oldScrabbleScorer(initialPrompt()));
+   //console.log(oldScrabbleScorer(initialPrompt()));
    //console.log(simpleScorer(initialPrompt()));
    //console.log(vowelBonusScorer(initialPrompt()));
    console.log(scorerPrompt());
